@@ -14,6 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.SystemColor;
 
 public class CadastroDocumento extends JFrame {
 
@@ -22,6 +25,7 @@ public class CadastroDocumento extends JFrame {
 	private JTextField tfData;
 	private JTextField tfTipo;
 	private JTextField tfRef;
+	private JTable tbCadastro;
 
 	/**
 	 * Launch the application.
@@ -43,10 +47,11 @@ public class CadastroDocumento extends JFrame {
 	 * Create the frame.
 	 */
 	public CadastroDocumento() {
+		setTitle("Cadastro de Documento");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 742, 478);
+		setBounds(100, 100, 619, 529);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(SystemColor.control);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -128,5 +133,28 @@ public class CadastroDocumento extends JFrame {
 		tfDescricao.setFont(new Font("Source Sans Pro", Font.PLAIN, 15));
 		spDescricao.setViewportView(tfDescricao);
 		tfDescricao.setLineWrap(true);
+		
+		JScrollPane spTabela = new JScrollPane();
+		spTabela.setBounds(10, 231, 582, 221);
+		contentPane.add(spTabela);
+		
+		tbCadastro = new JTable();
+		spTabela.setViewportView(tbCadastro);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setBounds(503, 460, 89, 23);
+		contentPane.add(btnSalvar);
+		
+		JButton btnEditar = new JButton("Editar");
+		btnEditar.setBounds(404, 460, 89, 23);
+		contentPane.add(btnEditar);
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(305, 460, 89, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.setBounds(206, 460, 89, 23);
+		contentPane.add(btnLimpar);
 	}
 }
