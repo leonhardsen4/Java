@@ -767,7 +767,32 @@ public class App {
         d. Triângulo Escaleno: aquele que tem os comprimentos de seus três lados diferentes;
         */
         
+        int ladoA = 0;
+        int ladoB = 0;
+        int ladoC = 0;
+        
+        Scanner input = new Scanner(System.in);
+        
         msg("Exercício 32");
+        msg("\nInforme os três lados do triângulo:\n");
+        msg("Lado A: ");
+        ladoA = input.nextInt();
+        msg("Lado B: ");
+        ladoB = input.nextInt();
+        msg("Lado C: ");
+        ladoC = input.nextInt();
+
+        if (ladoA < ladoB + ladoC && ladoB < ladoA + ladoC  && ladoC < ladoA + ladoB){
+            if (ladoA == ladoB && ladoB == ladoC){
+                msg("\nÉ um triângulo equilátero.\n");
+            } else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC){
+                msg("\nÉ um triângulo isóscele.\n");
+            } else{
+                msg("\nÉ um triângulo escaleno.\n");
+            }
+        } else {
+            msg("\nNão é um triângulo.\n");
+        }
         
         sair();
         
@@ -783,9 +808,43 @@ public class App {
         c. Professor Nível 3 R$25,00 por hora/aula;
         */
         
-        msg("Exercício 33");
+        float horas = 0.0f;
+        float salario = 0.0f;
+        int nivel = 0;
+             
+        Scanner input = new Scanner(System.in);
         
-        sair();
+        msg("Exercício 33");
+        do{
+            msg("\nInforme a quantidade de horas trabalhadas: ");
+            horas = input.nextFloat();
+            msg("Informe o nível do professor: "
+                    + "\n1 - Nível 1"
+                    + "\n2 - Nível 2"
+                    + "\n3 - Nível 3\n"
+                    + "Digite ao número correspondente: ");
+            nivel = input.nextInt();
+            
+            switch (nivel){
+                    case 1:
+                        salario = horas * 12;
+                        break;
+                    case 2:
+                        salario = horas * 17;
+                        break;
+                    case 3:
+                        salario = horas * 25;
+                        break;
+                    default:
+                        msg("\nEntrada inválida!");
+                        break;
+            }
+                  
+        } while (nivel < 1 || nivel > 3);
+        
+        System.out.printf("\nO salário do professor é R$%.2f", salario);
+        
+        sair(); 
         
     }
     
@@ -802,10 +861,34 @@ public class App {
         quando for outro ano não contemplado
         */
         
+        int idade = 0;
+        String categoria = "";
+             
+        Scanner input = new Scanner(System.in);
+        
         msg("Exercício 34");
+        do{
+            msg("\nInforme a idade do nadador: ");
+            idade = input.nextInt();
+
+            if (idade >= 5 && idade <= 7){
+                categoria = "Infantil A";
+            } else if (idade >=8 & idade <= 10){
+                categoria = "Infantil B";
+            } else if (idade >=11 & idade <= 13){
+               categoria = "Juvenil A";
+            } else if (idade >= 14 && idade <= 17){
+                categoria = "Juvenil B";
+            } else if (idade >= 18 && idade <= 25){
+                categoria = "Sênior";
+            } else {
+                msg("Entrada inválida.\n");
+            }
+        } while (idade > 25 || idade < 5);
         
-        sair();
+        System.out.println("A categoria do nadador é: " + categoria);
         
+        sair();   
     }
     
     public static void exercicio35(){
@@ -817,8 +900,35 @@ public class App {
         b. (Comércio)           0,48;
         c. (Indústria)          1,29.
         */
+        float consumo = 0.0f;
+        float conta = 0.0f;
+        char tipo = 'a';
+             
+        Scanner input = new Scanner(System.in);
         
         msg("Exercício 35");
+        do{
+            msg("\nInforme a quantidade de KW/h utilizados: ");
+            consumo = input.nextFloat();
+            msg("Informe o tipo de usuário: "
+                    + "\na - Residencial"
+                    + "\nb - Comercial"
+                    + "\nc - Industrial\n"
+                    + "Digite a letra correspondente: ");
+            tipo = input.next().charAt(0);
+
+            if (tipo == 'a' || tipo  == 'A'){
+                conta = consumo * 0.60f;
+            } else if (tipo == 'b' || tipo == 'B'){
+                conta = consumo * 0.48f;
+            } else if (tipo == 'c' || tipo == 'C'){
+                conta = consumo * 1.29f;
+            } else {
+                msg("\nEntrada inválida.\n");
+            }
+        }while (tipo != 'a' && tipo != 'A' && tipo != 'b' && tipo != 'B' && tipo != 'c' && tipo != 'C');
+        
+        System.out.printf("O valor da conta é: R$%.2f", + conta);
         
         sair();
     }
@@ -862,10 +972,10 @@ public class App {
             System.out.println("29 - Exercício 29");
             System.out.println("30 - Exercício 30");
             System.out.println("31 - Exercício 31");
-            System.out.println("32 - Exercício 32");
-            System.out.println("33 - Exercício 33");
-            System.out.println("34 - Exercício 34");
-            System.out.println("35 - Exercício 35");
+            System.out.println("32 - Exercício 32: Triângulos");
+            System.out.println("33 - Exercício 33: Salário do professor");
+            System.out.println("34 - Exercício 34: Categoria do nadador");
+            System.out.println("35 - Exercício 35: Conta de energia");
             System.out.println("Ou digite 0 para sair.\n");
             System.out.print("Opção: ");
             opcao = input.nextInt();
